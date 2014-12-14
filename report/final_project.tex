@@ -4,16 +4,14 @@
 \usepackage{url}
 %\documentstyle[nips14submit_09,times,art10]{article} % For LaTeX 2.09
 
-
-\title{Ensemble Learning Models for CTR Prediction}
-
+\title{Learning Models for Click-Through-Rate Prediction}
 
 \author{
 Sampoorna Biswas \\
 %\thanks{ Use footnote for providing further information about author (webpage, alternative address)---\emph{not} for acknowledging funding agencies.} \\
 Department of Computer Science\\
 The University of British Columbia\\
-\texttt{sbiswas@cs.ubc.ca} \\
+\texttt{sambis@cs.ubc.ca} \\
 \And
 Sam Creed \\
 Department of Computer Science\\
@@ -40,25 +38,28 @@ The University of British Columbia\\
 \maketitle
 
 \begin{abstract}
-The abstract paragraph should be indented 1/2~inch (3~picas) on both left and
-right-hand margins. Use 10~point type, with a vertical spacing of 11~points.
-The word \textbf{Abstract} must be centered, bold, and in point size 12. Two
-line spaces precede the abstract. The abstract must be limited to one
-paragraph.
+CTR prediction is an important metric for evaluating ad performance in online advertising, and is commonly used in sponsored search and real-time bid applications. In this paper we explore combinations of basic learning algorithms to predict CTR, and compare them against Google's state-of-the-art Proximal algorithm. using logistic loss as our evaluation measure, we find certain results hold over the Kaggle competition (state how algorithms measure up).
 \end{abstract}
 
 \section{Introduction}
 
-In this section we will
+Click-through rate (CTR) prediction is a well studied problem in the online advertisment world [source]. Under common advertisment models, companies only pay for ad placement when a user clicks on the ad. By learning the likelihood of an ad being clicked, companies are more able to target interested users more frequently, and advertisers directly improve their expected profit. Considering that online marketplaces such as Amazon generate billions of dollars in revenue each year, even a 1\% improvement to targeting will have a large impact.
 
-\begin{itemize}
-\item state the problem being addressed (CTR prediction)
-\item define CTR prediction
-\item explain what a kaggle competition is and how it is relevant to this project
-\item motivate why this is an important problem
-\item highlight challenges of limiting approaches
-\item summarize contribution of work/why and what we want to do
-\end{itemize}
+One major challenge of CTR prediction is the massive scale of the data involved. In a given day, a large online advertiser may have billions of sample events (e.g. customer views ad, and then does not click on it) to consider [source]. If we are to take advantage of the large amounts of training data available, we are restricted to online algorithms that do not require the entire training dataset to be loaded into memory. Another issue is the unbounded space of the cateogorical features. Any algorithms we choose must be able to handle unknown classes in features, as they occassionally arise in this problem.
+
+The goal of this paper is to explore the performance of common machine learning algorithms (Naive Bayes, Random Forests, SGD) and techniques (Bagging, AdaBoost, Ensemble) to tackle the CTR prediction problem. We also compare these simple algorithms to the state-of-the-art FTRL-Proximal online learning algorithm created by Google for their CTR prediction. Time permitting, we will attempt to use ensemble methods to combine these learning algorithms together to acheive a more accuracte predictor.
+
+To test our results, we will compete in the ongoing Kaggle CTR prediction contest, which provides 11 days worth of Avazu ad click metadata to train our models.
+
+
+%\begin{itemize}
+%\item state the problem being addressed (CTR prediction)
+%\item define CTR prediction
+%\item explain what a kaggle competition is and how it is relevant to this project
+%\item motivate why this is an important problem
+%\item highlight challenges of limiting approaches
+%\item summarize contribution of work/why and what we want to do
+%\end{itemize}
 
 \section{Related Work}
 \label{gen_inst}
